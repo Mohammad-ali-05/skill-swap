@@ -4,6 +4,8 @@ import Footer from '../Components/Footer';
 import TopRatedProviders from '../Components/TopRatedProviders';
 import HowItWorks from '../Components/HowItWorks';
 import SwiperCourseImages from '../Components/SwiperCourseImages';
+import SuccessStories from '../Components/SuccessStories';
+import { Outlet } from 'react-router';
 
 const MainLayout = () => {
     return (
@@ -17,9 +19,14 @@ const MainLayout = () => {
                 <section>
                     <SwiperCourseImages></SwiperCourseImages>
                 </section>
-                <section></section>
+                <section>
+                    <Outlet></Outlet>
+                </section>
                 <section>
                     <TopRatedProviders></TopRatedProviders>
+                </section>
+                <section>
+                    <SuccessStories></SuccessStories>
                 </section>
                 <section>
                     <HowItWorks></HowItWorks>

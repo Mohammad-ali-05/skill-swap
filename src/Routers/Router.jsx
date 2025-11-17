@@ -7,7 +7,19 @@ const Router = createBrowserRouter([
     {
         path: "/",
         element: <MainLayout></MainLayout>,
-        loader: ()=> fetch("course-data.json"),
+        loader: async () => {
+            const [courseRes, successRes] = await Promise.all([
+                fetch("/course-data.json"),
+                fetch("/success-stories.json")
+            ]);
+
+            const [courseData, successData] = await Promise.all([
+                courseRes.json(),
+                successRes.json()
+            ]);
+
+            return { courseData, successData }
+        },
         children: [
             {
                 index: true,

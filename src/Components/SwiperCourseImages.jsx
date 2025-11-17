@@ -9,7 +9,8 @@ import { A11y, Navigation } from "swiper/modules";
 import SwiperImage from "./SwiperImage";
 
 const SwiperCourseImages = () => {
-  const allCourseData = useLoaderData();
+  const { courseData} = useLoaderData();
+  const allCourseData = courseData
 
   return (
     <div className="my-10">

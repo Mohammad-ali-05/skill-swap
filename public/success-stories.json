@@ -6,7 +6,7 @@
     "rating": 5,
     "review": "The offline classes helped me improve my confidence a lot. My instructor was patient and friendly. Booking through the platform was very easy!",
     "date": "2024-11-10",
-    "avatar": "https://i.postimg.cc/MTB0gZ7y/user1.jpg"
+    "avatar": "https://cdn-icons-png.flaticon.com/128/6997/6997662.png"
   },
   {
     "id": 2,
@@ -15,7 +15,7 @@
     "rating": 4.8,
     "review": "Great experience! Learned chords and 3 songs in just three weeks. I loved the offline environment because it was more personal.",
     "date": "2024-11-05",
-    "avatar": "https://i.postimg.cc/8P9V9TnL/user2.jpg"
+    "avatar": "https://cdn-icons-png.flaticon.com/128/2202/2202112.png"
   },
   {
     "id": 3,
@@ -24,7 +24,7 @@
     "rating": 4.9,
     "review": "The instructor explained everything clearly. I learned Photoshop and Illustrator from scratch. Highly recommend this platform!",
     "date": "2024-10-28",
-    "avatar": "https://i.postimg.cc/q7RDvJxg/user3.jpg"
+    "avatar": "https://cdn-icons-png.flaticon.com/128/4140/4140047.png"
   },
   {
     "id": 4,
@@ -33,24 +33,24 @@
     "rating": 5,
     "review": "Amazing hands-on offline training. I can now bake cakes and cookies professionally. Booking appointments was smooth.",
     "date": "2024-11-12",
-    "avatar": "https://i.postimg.cc/pdzrjJYf/user4.jpg"
+    "avatar": "https://cdn-icons-png.flaticon.com/128/1999/1999625.png"
   },
   {
     "id": 5,
     "name": "Nusrat Jahan",
-    "skillLearned": "Digital Marketing",
+    "skillLearned": "Yoga",
     "rating": 4.7,
     "review": "Very practical offline sessions. The tutor gave real case studies. Perfect for beginners!",
     "date": "2024-11-01",
-    "avatar": "https://i.postimg.cc/CLRqgBxy/user5.jpg"
+    "avatar": "https://cdn-icons-png.flaticon.com/128/921/921124.png"
   },
   {
     "id": 6,
     "name": "Imran Hossain",
-    "skillLearned": "Driving Lessons",
+    "skillLearned": "Creative Writing",
     "rating": 4.9,
     "review": "The instructor was very professional. Offline classes helped me learn much faster. Passed my driving test!",
     "date": "2024-11-08",
-    "avatar": "https://i.postimg.cc/qMBtYjvH/user6.jpg"
+    "avatar": "https://cdn-icons-png.flaticon.com/128/4202/4202831.png"
   }
 ]
