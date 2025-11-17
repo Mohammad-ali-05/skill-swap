@@ -7,6 +7,7 @@ const Router = createBrowserRouter([
     {
         path: "/",
         element: <MainLayout></MainLayout>,
+        loader: ()=> fetch("course-data.json"),
         children: [
             {
                 index: true,
