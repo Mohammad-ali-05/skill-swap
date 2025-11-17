@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
 import TopRatedProviders from '../Components/TopRatedProviders';
+import HowItWorks from '../Components/HowItWorks';
 
 const MainLayout = () => {
     return (
@@ -14,6 +15,9 @@ const MainLayout = () => {
             <main>
                 <section>
                     <TopRatedProviders></TopRatedProviders>
+                </section>
+                <section>
+                    <HowItWorks></HowItWorks>
                 </section>
             </main>
             <footer>
