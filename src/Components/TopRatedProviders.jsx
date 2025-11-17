@@ -8,8 +8,6 @@ const TopRatedProviders = () => {
     const sortedCourseData = allCourseData.sort((a, b) => b.rating - a.rating)
     const topFiveCourseData = sortedCourseData.slice(0,5) 
 
-    console.log(topFiveCourseData)
-
     return (
         <div className='px-6 md:px-14 lg:px-28 py-10 my-10'>
             <div className='shadow-lg rounded-lg bg-[rgba(244,247,251,0.6)] p-2 md:p-6 lg:p-10'>

@@ -1,8 +1,12 @@
 import React from "react";
 import { FaStar } from "react-icons/fa";
+import { Link } from "react-router";
 
 const TopRatedProvidersCard = ({ singleCourse }) => {
-  console.log(singleCourse);
+  const courseId = singleCourse.skillId;
+  const courseName = singleCourse.skillName;
+  const urlName = courseName.toLowerCase().split(" ").join("-");
+  console.log(urlName);
   return (
     <div>
       <div className="bg-white rounded-lg flex flex-col justify-between shadow-md p-4 h-full">
@@ -23,9 +27,11 @@ const TopRatedProvidersCard = ({ singleCourse }) => {
               <span>{singleCourse.rating}</span>
             </p>
           </div>
-          <button className="bg-[#1A73E8] hover:bg-[#6cc44c] rounded-md text-white w-full mt-2 h-10">
-            View course
-          </button>
+          <Link to={`/course-details/${urlName}=${courseId}`}>
+            <button className="bg-[#1A73E8] hover:bg-[#6cc44c] rounded-md text-white w-full mt-2 h-10">
+              View course
+            </button>
+          </Link>
         </div>
       </div>
     </div>

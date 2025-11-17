@@ -16,6 +16,10 @@ const Router = createBrowserRouter([
         ]
     },
     {
+        path: "/course-details/:slug",
+        element: <p>Course details is here</p>
+    },
+    {
         path: "/profile",
         element: <h3>Profile is here</h3>
     },

@@ -3,6 +3,7 @@ import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
 import TopRatedProviders from '../Components/TopRatedProviders';
 import HowItWorks from '../Components/HowItWorks';
+import SwiperCourseImages from '../Components/SwiperCourseImages';
 
 const MainLayout = () => {
     return (
@@ -13,6 +14,10 @@ const MainLayout = () => {
                 </nav>
             </header>
             <main>
+                <section>
+                    <SwiperCourseImages></SwiperCourseImages>
+                </section>
+                <section></section>
                 <section>
                     <TopRatedProviders></TopRatedProviders>
                 </section>
