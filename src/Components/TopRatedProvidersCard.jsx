@@ -6,7 +6,6 @@ const TopRatedProvidersCard = ({ singleCourse }) => {
   const courseId = singleCourse.skillId;
   const courseName = singleCourse.skillName;
   const urlName = courseName.toLowerCase().split(" ").join("-");
-  console.log(urlName);
   return (
     <div>
       <div className="bg-white rounded-lg flex flex-col justify-between shadow-md p-4 h-full">

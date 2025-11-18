@@ -14,8 +14,8 @@ const SuccessStories = () => {
         Real stories of growth and connection
       </p>
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 items-stretch">
-        {successData.map((successStory) => (
-          <SuccessStoryCard successStory={successStory}></SuccessStoryCard>
+        {successData.map((successStory, index) => (
+          <SuccessStoryCard key={index} successStory={successStory}></SuccessStoryCard>
         ))}
       </div>
     </div>
