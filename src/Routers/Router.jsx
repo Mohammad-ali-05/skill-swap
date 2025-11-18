@@ -5,6 +5,7 @@ import Home from "../Pages/Home";
 import MainLayout from "../Layouts/MainLayout";
 import SkillDetails from "../Pages/SkillDetails";
 import Login from "../Components/Login";
+import Registration from "../Components/Registration";
 
 const Router = createBrowserRouter([
   {
@@ -43,7 +44,7 @@ const Router = createBrowserRouter([
       },
       {
         path: "/auth/register",
-        element: <h2>Register is here</h2>,
+        element: <Registration></Registration>,
       },
     ],
   },
