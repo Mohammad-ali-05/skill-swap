@@ -1,54 +1,51 @@
-import React from 'react';
-import { createBrowserRouter } from 'react-router';
-import MainLayout from '../Layouts/MainLayout';
-import Home from '../Pages/Home';
+import React from "react";
+import { createBrowserRouter } from "react-router";
+import HomeLayout from "../Layouts/HomeLayout";
+import Home from "../Pages/Home";
+import MainLayout from "../Layouts/MainLayout";
+import SkillDetails from "../Pages/SkillDetails";
+import Login from "../Components/Login";
 
 const Router = createBrowserRouter([
-    {
-        path: "/",
-        element: <MainLayout></MainLayout>,
+  {
+    path: "/",
+    element: <MainLayout></MainLayout>,
+    children: [
+      {
+        index: true,
+        element: <HomeLayout></HomeLayout>,
         loader: async () => {
-            const [courseRes, successRes] = await Promise.all([
-                fetch("/course-data.json"),
-                fetch("/success-stories.json")
-            ]);
+          const [courseRes, successRes] = await Promise.all([
+            fetch("/course-data.json"),
+            fetch("/success-stories.json"),
+          ]);
 
-            const [courseData, successData] = await Promise.all([
-                courseRes.json(),
-                successRes.json()
-            ]);
+          const [courseData, successData] = await Promise.all([
+            courseRes.json(),
+            successRes.json(),
+          ]);
 
-            return { courseData, successData }
+          return { courseData, successData };
         },
-        children: [
-            {
-                index: true,
-                element: <Home></Home>,
-                loader: ()=> fetch("/course-data.json")
-            }
-        ]
-    },
-    {
+      },
+      {
         path: "/course-details/:slug",
-        element: <p>Course details is here</p>
-    },
-    {
+        element: <SkillDetails></SkillDetails>,
+        loader: () => fetch("/course-data.json"),
+      },
+      {
         path: "/profile",
-        element: <h3>Profile is here</h3>
-    },
-    {
-        path: "/auth",
-        element: <h2>Auth layout is here</h2>,
-        children: [
-            {
-                path: "/auth/login",
-                element: <h2>Login is here</h2>
-            },
-            {
-                path: "/auth/register",
-                element: <h2>Register is here</h2>
-            }
-        ]
-    }
-])
+        element: <h3>Profile is here</h3>,
+        },
+      {
+        path: "/auth/login",
+        element: <Login></Login>,
+      },
+      {
+        path: "/auth/register",
+        element: <h2>Register is here</h2>,
+      },
+    ],
+  },
+]);
 export default Router;

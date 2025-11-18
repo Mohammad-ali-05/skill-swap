@@ -9,7 +9,7 @@ import { A11y, Navigation } from "swiper/modules";
 import SwiperImage from "./SwiperImage";
 
 const SwiperCourseImages = () => {
-  const { courseData} = useLoaderData();
+  const {courseData} = useLoaderData();
   const allCourseData = courseData
 
   return (
