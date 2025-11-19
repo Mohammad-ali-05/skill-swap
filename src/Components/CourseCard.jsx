@@ -33,7 +33,7 @@ const CourseCard = ({ courseData }) => {
           </div>
           <Link to={`/course-details/${urlName}=${courseId}`}>
             <button className="text-white text-2xl bg-[#1A73E8] hover:bg-[#6cc44c] font-bold rounded-lg px-4 py-1">
-              Enroll Now
+              View Details
             </button>
           </Link>
         </div>

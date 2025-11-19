@@ -6,7 +6,7 @@ import { Link, useLocation, useNavigate } from "react-router";
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const { loginUser, googleLogin } = useContext(AuthContext);
+  const { loginUser, googleLogin, setEmail } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -18,7 +18,7 @@ const Login = () => {
     loginUser(email, password)
       .then((userCredentials) => {
         console.log(userCredentials);
-        navigate(`${location.state}`);
+        navigate(location.state ? `${location.state}` : "/");
       })
       .catch((error) => {
         if (error.message === "Firebase: Error (auth/invalid-credential).") {
@@ -29,8 +29,14 @@ const Login = () => {
   };
 
   const handleGoogleLogin = () => {
-    googleLogin().then(() => navigate(`${location.state}`));
+    googleLogin().then(() =>
+      navigate(location.state ? `${location.state}` : "/")
+    );
   };
+
+  const handleEmailOnChange = (e) => {
+    setEmail(e.target.value)
+  }
 
   return (
     <div>
@@ -52,7 +58,7 @@ const Login = () => {
               <form onSubmit={handleUserLogin}>
                 <fieldset className="fieldset">
                   <label className="label text-2xl font-bold">Email</label>
-                  <input
+                  <input onChange={handleEmailOnChange}
                     type="email"
                     name="email"
                     className="input"
@@ -68,11 +74,11 @@ const Login = () => {
                       placeholder="Enter your password"
                       required
                     />
-                    <button
+                    <div
                       onClick={() => setShowPassword(!showPassword)}
                       className="absolute z-10 text-xl right-7 top-2.5">
                       {showPassword ? <FaRegEyeSlash /> : <FaRegEye />}
-                    </button>
+                    </div>
                   </div>
                   <div>
                     {errorMessage && (
@@ -82,7 +88,11 @@ const Login = () => {
                     )}
                   </div>
                   <div>
-                    <a className="link link-hover">Forgot password?</a>
+                    <Link
+                      to={"/auth/reset-password"}
+                      className="link link-hover">
+                      Forgot password?
+                    </Link>
                   </div>
                   <button className="btn btn-neutral bg-[#1A73E8] hover:bg-[#6cc44c] mt-4">
                     Login

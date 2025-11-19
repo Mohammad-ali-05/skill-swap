@@ -8,6 +8,9 @@ import Login from "../Components/Login";
 import Registration from "../Components/Registration";
 import AuthProvider from "../Contexts/AuthProvider";
 import PrivateRoutes from "./PrivateRoutes";
+import Profile from "../Components/Profile";
+import ResetPassword from "../Components/ResetPassword";
+import ErrorPage from "../Components/ErrorPage";
 
 const Router = createBrowserRouter([
   {
@@ -17,6 +20,7 @@ const Router = createBrowserRouter([
         <MainLayout></MainLayout>
       </AuthProvider>
     ),
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         index: true,
@@ -46,7 +50,11 @@ const Router = createBrowserRouter([
       },
       {
         path: "/profile",
-        element: <h3>Profile is here</h3>,
+        element: (
+          <PrivateRoutes>
+            <Profile></Profile>
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/auth/login",
@@ -55,6 +63,10 @@ const Router = createBrowserRouter([
       {
         path: "/auth/register",
         element: <Registration></Registration>,
+      },
+      {
+        path: "/auth/reset-password",
+        element: <ResetPassword></ResetPassword>,
       },
     ],
   },

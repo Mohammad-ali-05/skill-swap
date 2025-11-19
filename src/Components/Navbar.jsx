@@ -38,17 +38,6 @@ const Navbar = () => {
           My profile
         </NavLink>
       </li>
-      <li>
-        <NavLink
-          to={"/about-us"}
-          className={({ isActive }) =>
-            `hover:text-[#6cc44c] text-lg font-semibold ${
-              isActive ? `text-[#6cc44c] underline` : `text-[#1A73E8]`
-            }`
-          }>
-          About us
-        </NavLink>
-      </li>
     </>
   );
 

@@ -6,13 +6,16 @@ import { Link, useNavigate } from "react-router";
 const Registration = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const { createUser, googleLogin } = useContext(AuthContext);
+  const { setUser, createUser, googleLogin, updateUserProfile } =
+    useContext(AuthContext);
   const navigate = useNavigate();
 
   /* Function for creating user */
   const handleUserRegistration = (e) => {
     e.preventDefault();
 
+    const name = e.target.elements.name.value;
+    const photoUrl = e.target.elements.photoURL.value;
     const email = e.target.elements.email.value;
     const password = e.target.elements.password.value;
 
@@ -20,16 +23,28 @@ const Registration = () => {
       return;
     }
 
-    console.log(email, password);
+    console.log(name, photoUrl);
 
     createUser(email, password)
-      .then((userCredentials) => {
-        console.log(userCredentials.user);
-        navigate("/");
+      .then((result) => {
+        const user = result.user;
+        updateUserProfile({
+          displayName: name,
+          photoURL: photoUrl,
+        }).then(() => {
+          setUser({ ...user, displayName: name, photoURL: photoUrl });
+          navigate("/");
+        });
       })
       .catch((error) => {
         console.log(error.message);
       });
+  };
+
+  const handleGoogleLogin = () => {
+    googleLogin().then(() =>
+      navigate(location.state ? `${location.state}` : "/")
+    );
   };
 
   const handlePasswordOnChange = (e) => {
@@ -75,6 +90,7 @@ const Registration = () => {
                   <label className="label text-2xl font-bold">Name</label>
                   <input
                     type="text"
+                    name="name"
                     className="input"
                     placeholder="Enter your name"
                     required
@@ -82,6 +98,7 @@ const Registration = () => {
                   <label className="label text-2xl font-bold">Photo URl</label>
                   <input
                     type="text"
+                    name="photoURL"
                     className="input"
                     placeholder="Enter your photo url"
                     required
@@ -104,11 +121,11 @@ const Registration = () => {
                       placeholder="Enter your password"
                       required
                     />
-                    <button
+                    <div
                       onClick={() => setShowPassword(!showPassword)}
                       className="absolute z-10 text-xl right-7 top-2.5">
                       {showPassword ? <FaRegEyeSlash /> : <FaRegEye />}
-                    </button>
+                    </div>
                   </div>
                   <div>
                     {errorMessage && (
@@ -127,7 +144,7 @@ const Registration = () => {
                   Other register options
                 </p>
                 <button
-                  onClick={() => googleLogin()}
+                  onClick={handleGoogleLogin}
                   className="btn bg-white text-black w-full mt-2 border-[#e5e5e5]">
                   <svg
                     aria-label="Google logo"
@@ -153,7 +170,12 @@ const Registration = () => {
                   </svg>
                   Login with Google
                 </button>
-                <p>Already have an account? <Link to="/auth/login" className="hover:underline">Login</Link></p>
+                <p>
+                  Already have an account?{" "}
+                  <Link to="/auth/login" className="hover:underline">
+                    Login
+                  </Link>
+                </p>
               </div>
             </div>
           </div>

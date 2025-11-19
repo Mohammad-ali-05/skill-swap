@@ -1,7 +1,7 @@
 import React from 'react';
 import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
-import { Outlet } from 'react-router';
+import { Outlet, ScrollRestoration } from 'react-router';
 import { Toaster } from 'react-hot-toast';
 
 const MainLayout = () => {
@@ -13,6 +13,7 @@ const MainLayout = () => {
                 </nav>
             </header>
             <main className='flex-1'>
+                <ScrollRestoration></ScrollRestoration>
                 <Outlet></Outlet>
             </main>
             <footer>
