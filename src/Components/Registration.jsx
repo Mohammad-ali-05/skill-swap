@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import AuthContext from "../Contexts/AuthContext";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router";
+import toast from "react-hot-toast";
 
 const Registration = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -13,6 +14,8 @@ const Registration = () => {
   /* Function for creating user */
   const handleUserRegistration = (e) => {
     e.preventDefault();
+
+    
 
     const name = e.target.elements.name.value;
     const photoUrl = e.target.elements.photoURL.value;
@@ -36,8 +39,11 @@ const Registration = () => {
           navigate("/");
         });
       })
-      .catch(() => {
+      .catch((error) => {
         // console.log(error.message);
+        if (error.message === "Firebase: Error (auth/email-already-in-use).") {
+          toast("Email already in used")
+        }
       });
   };
 
