@@ -23,7 +23,7 @@ const Registration = () => {
       return;
     }
 
-    console.log(name, photoUrl);
+    // console.log(name, photoUrl);
 
     createUser(email, password)
       .then((result) => {
@@ -36,8 +36,8 @@ const Registration = () => {
           navigate("/");
         });
       })
-      .catch((error) => {
-        console.log(error.message);
+      .catch(() => {
+        // console.log(error.message);
       });
   };
 

@@ -16,15 +16,15 @@ const Login = () => {
     const password = e.target.elements.password.value;
 
     loginUser(email, password)
-      .then((userCredentials) => {
-        console.log(userCredentials);
+      .then(() => {
+        // console.log(userCredentials);
         navigate(location.state ? `${location.state}` : "/");
       })
       .catch((error) => {
         if (error.message === "Firebase: Error (auth/invalid-credential).") {
           setErrorMessage("Invalid email or password");
         }
-        console.log(error.message);
+        // console.log(error.message);
       });
   };
 
