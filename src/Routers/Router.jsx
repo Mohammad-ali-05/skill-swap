@@ -6,11 +6,17 @@ import MainLayout from "../Layouts/MainLayout";
 import SkillDetails from "../Pages/SkillDetails";
 import Login from "../Components/Login";
 import Registration from "../Components/Registration";
+import AuthProvider from "../Contexts/AuthProvider";
+import PrivateRoutes from "./PrivateRoutes";
 
 const Router = createBrowserRouter([
   {
     path: "/",
-    element: <MainLayout></MainLayout>,
+    element: (
+      <AuthProvider>
+        <MainLayout></MainLayout>
+      </AuthProvider>
+    ),
     children: [
       {
         index: true,
@@ -31,13 +37,17 @@ const Router = createBrowserRouter([
       },
       {
         path: "/course-details/:slug",
-        element: <SkillDetails></SkillDetails>,
+        element: (
+          <PrivateRoutes>
+            <SkillDetails></SkillDetails>
+          </PrivateRoutes>
+        ),
         loader: () => fetch("/course-data.json"),
       },
       {
         path: "/profile",
         element: <h3>Profile is here</h3>,
-        },
+      },
       {
         path: "/auth/login",
         element: <Login></Login>,

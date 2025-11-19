@@ -1,13 +1,56 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, NavLink } from "react-router";
+import AuthContext from "../Contexts/AuthContext";
 
 const Navbar = () => {
-    const links = <>
-        <li><NavLink to={"/"} className={({isActive}) =>`hover:text-[#6cc44c] text-lg font-semibold ${isActive ? `text-[#6cc44c] underline`: `text-[#1A73E8]`}`}>Home</NavLink></li>
-        <li><NavLink to={"/profile"} className={({isActive}) =>`hover:text-[#6cc44c] text-lg font-semibold ${isActive ? `text-[#6cc44c] underline`: `text-[#1A73E8]`}`}>My profile</NavLink></li>
-        <li><NavLink to={"/about-us"} className={({isActive}) =>`hover:text-[#6cc44c] text-lg font-semibold ${isActive ? `text-[#6cc44c] underline`: `text-[#1A73E8]`}`}>About us</NavLink></li>
-    </>
+  const { user, logoutUser } = useContext(AuthContext);
 
+  const handleLogout = () => {
+    logoutUser().then((result) => {
+      console.log(result)
+    })
+      .catch((error) => {
+      console.log(error.message)
+    })
+  }
+
+  const links = (
+    <>
+      <li>
+        <NavLink
+          to={"/"}
+          className={({ isActive }) =>
+            `hover:text-[#6cc44c] text-lg font-semibold ${
+              isActive ? `text-[#6cc44c] underline` : `text-[#1A73E8]`
+            }`
+          }>
+          Home
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to={"/profile"}
+          className={({ isActive }) =>
+            `hover:text-[#6cc44c] text-lg font-semibold ${
+              isActive ? `text-[#6cc44c] underline` : `text-[#1A73E8]`
+            }`
+          }>
+          My profile
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to={"/about-us"}
+          className={({ isActive }) =>
+            `hover:text-[#6cc44c] text-lg font-semibold ${
+              isActive ? `text-[#6cc44c] underline` : `text-[#1A73E8]`
+            }`
+          }>
+          About us
+        </NavLink>
+      </li>
+    </>
+  );
 
   return (
     <div>
@@ -36,16 +79,33 @@ const Navbar = () => {
               {links}
             </ul>
           </div>
-          <Link to={"/"} className="text-3xl font-bold text-[#1A73E8]">Skill<span className="text-[#6cc44c]">Swap</span></Link>
+          <Link to={"/"} className="text-3xl font-bold text-[#1A73E8]">
+            Skill<span className="text-[#6cc44c]">Swap</span>
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="flex gap-10">
-            {links}
-          </ul>
+          <ul className="flex gap-10">{links}</ul>
         </div>
         <div className="navbar-end gap-2">
-          <button className="bg-[#1A73E8] hover:bg-[#6cc44c] text-lg font-medium rounded-md text-white px-5 py-2"><Link to={"/auth/login"}>Login</Link></button>
-          <button className="bg-[#1A73E8] hover:bg-[#6cc44c] text-lg font-medium rounded-md text-white px-5 py-2"><Link to={"/auth/register"}>Register</Link></button>
+          {user ? (
+            <div className="flex items-center gap-2">
+              <img src={user.photoURL} alt={user.displayName} className="h-11 rounded-sm"/>
+              <button onClick={handleLogout} className="bg-[#1A73E8] hover:bg-[#6cc44c] text-lg font-medium rounded-md text-white px-5 py-2">Logout</button>
+            </div>
+          ) : (
+            <div className="flex gap-2">
+              <Link to={"/auth/login"}>
+                <button className="bg-[#1A73E8] hover:bg-[#6cc44c] text-lg font-medium rounded-md text-white px-5 py-2">
+                  Login
+                </button>
+              </Link>
+              <Link to={"/auth/register"}>
+                <button className="bg-[#1A73E8] hover:bg-[#6cc44c] text-lg font-medium rounded-md text-white px-5 py-2">
+                  Register
+                </button>
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </div>
