@@ -26,7 +26,7 @@ const ResetPassword = () => {
                     name="email"
                     className="input"
                     placeholder="Enter your email"
-                    value={email}
+                    defaultValue={email}
                     required
                   />
                   <button className="btn btn-neutral bg-[#1A73E8] hover:bg-[#6cc44c] mt-4">
